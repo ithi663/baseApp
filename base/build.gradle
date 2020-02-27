@@ -1,0 +1,8 @@
+apply from: "../common_android_module.gradle"
+
+
+dependencies {
+
+    implementation project(":common_value_objects")
+}
+

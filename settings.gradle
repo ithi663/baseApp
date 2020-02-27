@@ -1,0 +1,4 @@
+include ':common_value_objects'
+include ':base'
+include ':app'
+rootProject.name = "BaseApp"
