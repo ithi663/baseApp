@@ -4,7 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'kotlin-kapt'
 apply from: "../dependencies.gradle"
-apply from: 'keytool.gradle'
 
 
 android {
@@ -23,34 +22,17 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        debug {
-            storeFile file("${projectDir}/.debug.keystore")
-            storePassword 'changeit'
-            keyAlias  "${defaultConfig.applicationId}-debug"
-            keyPassword 'changeit'
-            genkey.options.dname = "CN=Debug,OU=Android,O=GitHub,L=Taipei,ST=Taiwan,C=TW"
-        }
-        release {
-            storeFile file("${projectDir}/.release.keystore")
-            storePassword 'storePassword'
-            keyAlias  "${defaultConfig.applicationId}-release"
-            keyPassword 'keyPassword'
-            genkey.options.dname = "CN=Release,OU=Android,O=GitHub,L=Taipei,ST=Taiwan,C=TW"
-        }
-    }
+
 
     buildTypes {
 
         debug {
             minifyEnabled false
-            signingConfig signingConfigs.debug
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
         }
     }
 }
