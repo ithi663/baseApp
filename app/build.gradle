@@ -24,19 +24,12 @@ android {
     }
 
     signingConfigs {
-        debug {
-            storeFile file("${projectDir}/.debug.keystore")
-            storePassword 'changeit'
-            keyAlias  "${defaultConfig.applicationId}-debug"
-            keyPassword 'changeit'
-            genkey.options.dname = "CN=Debug,OU=Android,O=GitHub,L=Taipei,ST=Taiwan,C=TW"
-        }
+
         release {
-            storeFile file("${projectDir}/.release.keystore")
-            storePassword 'storePassword'
-            keyAlias  "${defaultConfig.applicationId}-release"
-            keyPassword 'keyPassword'
-            genkey.options.dname = "CN=Release,OU=Android,O=GitHub,L=Taipei,ST=Taiwan,C=TW"
+            storeFile file("../mainStore.jks")
+            storePassword "12345678"
+            keyAlias "mainKey"
+            keyPassword "12345678"
         }
     }
 
@@ -49,6 +42,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
