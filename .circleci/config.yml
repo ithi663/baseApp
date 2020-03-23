@@ -21,6 +21,6 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Initial build
-          command: ./gradlew clean assembleDebug
+          command: ./gradlew :app:assembleDebug
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app\build\outputs\apk\debug
